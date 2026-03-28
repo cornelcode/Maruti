@@ -173,6 +173,51 @@
   <div id="toastMsg" class="toast-notify">✨ Order placed!</div>
 
 
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+    // Initialize EmailJS
+    emailjs.init("kxmleXLMPku6Kj1x4");
+
+    document.getElementById('placeOrderBtn').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // Collect customer details
+        const name = document.getElementById('customerName').value;
+        const phone = document.getElementById('customerPhone').value;
+        const address = document.getElementById('customerAddress').value;
+        const date = document.getElementById('serviceDate').value;
+        const notes = document.getElementById('specialNotes').value;
+
+        // Collect order summary
+        const summaryList = document.getElementById('dynamicSummaryList').innerText;
+        const subtotal = document.getElementById('subtotalAmount').innerText;
+        const total = document.getElementById('grandTotalAmount').innerText;
+
+        // Prepare EmailJS data
+        const templateParams = {
+            name: name,
+            phone: phone,
+            address: address,
+            date: date,
+            notes: notes,
+            order_summary: summaryList,
+            subtotal: subtotal,
+            total: total
+        };
+
+        // Send email
+        emailjs.send('service_xielcig', 'template_cm1xdrm', templateParams)
+            .then(function(response) {
+                alert('Order placed successfully!');
+                console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                alert('Failed to place order. Try again.');
+                console.error('FAILED...', error);
+            });
+    });
+</script>
+
 
   <!-- JS -->
   <script>
