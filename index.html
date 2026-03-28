@@ -794,5 +794,15 @@
   });
 </script>
 
+<!-- Fix for mobile menu double-toggle: remove inline onclick handler -->
+<script>
+  (function() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    if (menuBtn && menuBtn.hasAttribute('onclick')) {
+      menuBtn.removeAttribute('onclick');
+    }
+  })();
+</script>
+
 </body>
 </html>
