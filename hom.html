@@ -157,177 +157,246 @@
               <div style="color:#94a3b8; text-align:center;">No items selected</div>
             </div>
             <div class="total-row"><span>Subtotal</span><span id="subtotalAmount">Ksh 0.00</span></div>
-            <div class="total-row" id="expressFeeRow" style="display: none;"><span>Express fee (50%)</span><span id="expressFeeAmount">Ksh 0.00</span></div>
+            <div class="total-row" id="expressFeeRow" style="display: none;"><span>Express fee (10%)</span><span id="expressFeeAmount">Ksh 0.00</span></div>
             <div class="total-row grand-total"><span>Total</span><span id="grandTotalAmount">Ksh 0.00</span></div>
           </div>
           <button class="btn-primary" id="placeOrderBtn"><i class="fas fa-check-circle"></i> Place order now</button>
           <button class="btn-secondary" id="resetFormBtn"><i class="fas fa-undo-alt"></i> Reset all items</button>
-          
         </div>
-          <img src="C:\Users\PC\LAUNDRY\ChatGPT Image Mar 27, 2026, 05_15_15 PM.png" alt="" style="width: 110%;height:30%;">
+        <!-- Replace local image with a placeholder (or remove if not needed) -->
+        <img src="https://images.unsplash.com/photo-1617196039187-cf7de71dc3ec?w=500&auto=format" alt="Laundry" style="width: 100%; height: auto; border-radius: 24px; margin-top: 0.5rem;">
       </div>
     </div>
 
     <footer><i class="fas fa-water"></i> Fresh & Clean guarantee | Same-day pickup available | Sustainable detergents | All prices in Ksh</footer>
   </div>
-  <div id="toastMsg" class="toast-notify">✨ Order placed!</div>
+  <div id="toastMsg" class="toast-notify">✨ Order placed successfully!</div>
 
-
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-<script>
-    // Initialize EmailJS
-    emailjs.init("kxmleXLMPku6Kj1x4");
-
-    document.getElementById('placeOrderBtn').addEventListener('click', function(event) {
-        event.preventDefault();
-
-        // Collect customer details
-        const name = document.getElementById('customerName').value;
-        const phone = document.getElementById('customerPhone').value;
-        const address = document.getElementById('customerAddress').value;
-        const date = document.getElementById('serviceDate').value;
-        const notes = document.getElementById('specialNotes').value;
-
-        // Collect order summary
-        const summaryList = document.getElementById('dynamicSummaryList').innerText;
-        const subtotal = document.getElementById('subtotalAmount').innerText;
-        const total = document.getElementById('grandTotalAmount').innerText;
-
-        // Prepare EmailJS data
-        const templateParams = {
-            name: name,
-            phone: phone,
-            address: address,
-            date: date,
-            notes: notes,
-            order_summary: summaryList,
-            subtotal: subtotal,
-            total: total
-        };
-
-        // Send email
-        emailjs.send('service_xielcig', 'template_cm1xdrm', templateParams)
-            .then(function(response) {
-                alert('Order placed successfully!');
-                console.log('SUCCESS!', response.status, response.text);
-            }, function(error) {
-                alert('Failed to place order. Try again.');
-                console.error('FAILED...', error);
-            });
-    });
-</script>
-
-
-  <!-- JS -->
   <script>
-const LAUNDRY_ITEMS = [
-  { id: 1, name: "Curtains and Sheets", price: 150, img: "Screenshot 2026-03-27 163738.png" },
-  { id: 2, name: "Dust Coat", price: 100, img: "Screenshot 2026-03-27 164025.png" },
-  { id: 3, name: "Graduation Gown", price: 250, img: "Screenshot 2026-03-27 164046.png" },
-  { id: 4, name: "Bags Small", price: 70, img: "Screenshot 2026-03-27 164627.png" },
-  { id: 5, name: "Full Suit", price: 250, img: "Screenshot 2026-03-27 164807.png" },
-  { id: 6, name: "Jacket", price: 150, img: "https://images.pexels.com/photos/16170/pexels-photo.jpg" },
-  { id: 7, name: "Trench Coat", price: 150, img: "https://images.pexels.com/photos/5424917/pexels-photo-5424917.jpeg" },
-  { id: 8, name: "Leather Jacket", price: 200, img: "https://images.pexels.com/photos/7679455/pexels-photo-7679455.jpeg" },
-  { id: 9, name: "Cap", price: 50, img: "https://images.pexels.com/photos/5698908/pexels-photo-5698908.jpeg" },
-  { id: 10, name: "Brief Case Bag", price: 150, img: "https://images.pexels.com/photos/4894831/pexels-photo-4894831.jpeg" },
-  { id: 11, name: "Bedsheet", price: 150, img: "https://images.pexels.com/photos/2422571/pexels-photo-2422571.jpeg" },
-  { id: 12, name: "Doormat", price: 100, img: "https://images.pexels.com/photos/11815674/pexels-photo-11815674.jpeg" },
-  // Three duvet sizes with specified prices
-  { id: 13, name: "Duvet 4x6", price: 400, img: "https://images.pexels.com/photos/6207464/pexels-photo-6207464.jpeg" },
-  { id: 14, name: "Duvet 5x6", price: 500, img: "https://images.pexels.com/photos/6207464/pexels-photo-6207464.jpeg" },
-  { id: 15, name: "Duvet 6x6", price: 600, img: "https://images.pexels.com/photos/6207464/pexels-photo-6207464.jpeg" }
-];
+    // Updated laundry items with working image placeholders
+    const LAUNDRY_ITEMS = [
+      { id: 1, name: "Curtains and Sheets", price: 150, img: "https://images.unsplash.com/photo-1617196039187-cf7de71dc3ec?w=150&h=150&fit=crop" },
+      { id: 2, name: "Dust Coat", price: 100, img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=150&h=150&fit=crop" },
+      { id: 3, name: "Graduation Gown", price: 250, img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=150&h=150&fit=crop" },
+      { id: 4, name: "Bags Small", price: 70, img: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=150&h=150&fit=crop" },
+      { id: 5, name: "Full Suit", price: 250, img: "https://images.unsplash.com/photo-1594938291221-94f18cbb5660?w=150&h=150&fit=crop" },
+      { id: 6, name: "Jacket", price: 150, img: "https://images.pexels.com/photos/16170/pexels-photo.jpg?w=150&h=150&fit=crop" },
+      { id: 7, name: "Trench Coat", price: 150, img: "https://images.pexels.com/photos/5424917/pexels-photo-5424917.jpeg?w=150&h=150&fit=crop" },
+      { id: 8, name: "Leather Jacket", price: 200, img: "https://images.pexels.com/photos/7679455/pexels-photo-7679455.jpeg?w=150&h=150&fit=crop" },
+      { id: 9, name: "Cap", price: 50, img: "https://images.pexels.com/photos/5698908/pexels-photo-5698908.jpeg?w=150&h=150&fit=crop" },
+      { id: 10, name: "Brief Case Bag", price: 150, img: "https://images.pexels.com/photos/4894831/pexels-photo-4894831.jpeg?w=150&h=150&fit=crop" },
+      { id: 11, name: "Bedsheet", price: 150, img: "https://images.pexels.com/photos/2422571/pexels-photo-2422571.jpeg?w=150&h=150&fit=crop" },
+      { id: 12, name: "Doormat", price: 100, img: "https://images.pexels.com/photos/11815674/pexels-photo-11815674.jpeg?w=150&h=150&fit=crop" },
+      { id: 13, name: "Duvet 4x6", price: 400, img: "https://images.pexels.com/photos/6207464/pexels-photo-6207464.jpeg?w=150&h=150&fit=crop" },
+      { id: 14, name: "Duvet 5x6", price: 500, img: "https://images.pexels.com/photos/6207464/pexels-photo-6207464.jpeg?w=150&h=150&fit=crop" },
+      { id: 15, name: "Duvet 6x6", price: 600, img: "https://images.pexels.com/photos/6207464/pexels-photo-6207464.jpeg?w=150&h=150&fit=crop" }
+    ];
 
-const itemsContainer = document.getElementById('itemsContainer');
-const dynamicSummaryDiv = document.getElementById('dynamicSummaryList');
-const subtotalSpan = document.getElementById('subtotalAmount');
-const grandTotalSpan = document.getElementById('grandTotalAmount');
-const expressCheckbox = document.getElementById('expressCheckbox');
-const expressFeeRow = document.getElementById('expressFeeRow');
-const expressFeeSpan = document.getElementById('expressFeeAmount');
+    // DOM elements
+    const itemsContainer = document.getElementById('itemsContainer');
+    const dynamicSummaryDiv = document.getElementById('dynamicSummaryList');
+    const subtotalSpan = document.getElementById('subtotalAmount');
+    const grandTotalSpan = document.getElementById('grandTotalAmount');
+    const expressCheckbox = document.getElementById('expressCheckbox');
+    const expressFeeRow = document.getElementById('expressFeeRow');
+    const expressFeeSpan = document.getElementById('expressFeeAmount');
+    const placeOrderBtn = document.getElementById('placeOrderBtn');
+    const resetFormBtn = document.getElementById('resetFormBtn');
+    const toastMsg = document.getElementById('toastMsg');
 
-function renderItems() {
-  itemsContainer.innerHTML = "";
-  LAUNDRY_ITEMS.forEach(item => {
-    const itemRow = document.createElement('div');
-    itemRow.classList.add('item-row');
-    itemRow.innerHTML = `
-      <div class="item-info">
-        <img src="${item.img}" alt="${item.name}">
-        <div>
-          <div class="item-name">${item.name}</div>
-          <div class="item-price">Ksh ${item.price}</div>
-        </div>
-      </div>
-      <div class="item-controls">
-        <div class="qty-control">
-          <button onclick="updateQty(${item.id}, -1)">-</button>
-          <input type="number" id="qty-${item.id}" value="0" min="0">
-          <button onclick="updateQty(${item.id}, 1)">+</button>
-        </div>
-        <div class="item-line-total" id="lineTotal-${item.id}">Ksh 0</div>
-      </div>
-    `;
-    itemsContainer.appendChild(itemRow);
-  });
-}
+    // Business WhatsApp number (update with your own)
+    const WHATSAPP_NUMBER = "25459921272";  // Use international format without '+'
 
-function updateQty(id, change) {
-  const input = document.getElementById(`qty-${id}`);
-  let qty = parseInt(input.value) + change;
-  if (qty < 0) qty = 0;
-  input.value = qty;
-
-  const item = LAUNDRY_ITEMS.find(i => i.id === id);
-  document.getElementById(`lineTotal-${id}`).textContent = `Ksh ${qty * item.price}`;
-  updateSummary();
-}
-
-function updateSummary() {
-  let subtotal = 0;
-  dynamicSummaryDiv.innerHTML = "";
-  LAUNDRY_ITEMS.forEach(item => {
-    const qty = parseInt(document.getElementById(`qty-${item.id}`).value);
-    if (qty > 0) {
-      subtotal += qty * item.price;
-      const div = document.createElement('div');
-      div.classList.add('summary-item');
-      div.innerHTML = `<span>${item.name} x ${qty}</span><span>Ksh ${qty * item.price}</span>`;
-      dynamicSummaryDiv.appendChild(div);
+    // Helper: Show toast message
+    function showToast(message) {
+      toastMsg.textContent = message || "✨ Order placed successfully!";
+      toastMsg.classList.add('show');
+      setTimeout(() => toastMsg.classList.remove('show'), 3000);
     }
-  });
 
-  subtotalSpan.textContent = `Ksh ${subtotal}`;
-  if (expressCheckbox.checked) {
-    const expressFee = subtotal * 0.1;
-    expressFeeSpan.textContent = `Ksh ${expressFee}`;
-    expressFeeRow.style.display = 'flex';
-    grandTotalSpan.textContent = `Ksh ${subtotal + expressFee}`;
-  } else {
-    expressFeeRow.style.display = 'none';
-    grandTotalSpan.textContent = `Ksh ${subtotal}`;
-  }
+    // Render all items in the left column
+    function renderItems() {
+      itemsContainer.innerHTML = "";
+      LAUNDRY_ITEMS.forEach(item => {
+        const itemRow = document.createElement('div');
+        itemRow.classList.add('item-row');
+        itemRow.innerHTML = `
+          <div class="item-info">
+            <img src="${item.img}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/150?text=Laundry'">
+            <div>
+              <div class="item-name">${item.name}</div>
+              <div class="item-price">Ksh ${item.price}</div>
+            </div>
+          </div>
+          <div class="item-controls">
+            <div class="qty-control">
+              <button onclick="updateQty(${item.id}, -1)">-</button>
+              <input type="number" id="qty-${item.id}" value="0" min="0">
+              <button onclick="updateQty(${item.id}, 1)">+</button>
+            </div>
+            <div class="item-line-total" id="lineTotal-${item.id}">Ksh 0</div>
+          </div>
+        `;
+        itemsContainer.appendChild(itemRow);
+      });
+    }
 
-  if (subtotal === 0) dynamicSummaryDiv.innerHTML = `<div style="color:#94a3b8; text-align:center;">No items selected</div>`;
-}
+    // Update quantity and line total
+    window.updateQty = function(id, change) {
+      const input = document.getElementById(`qty-${id}`);
+      let qty = parseInt(input.value) + change;
+      if (qty < 0) qty = 0;
+      input.value = qty;
 
-expressCheckbox.addEventListener('change', updateSummary);
+      const item = LAUNDRY_ITEMS.find(i => i.id === id);
+      const lineTotal = qty * item.price;
+      document.getElementById(`lineTotal-${id}`).textContent = `Ksh ${lineTotal}`;
+      updateSummary();
+    };
 
-document.getElementById('placeOrderBtn').addEventListener('click', () => {
-  document.getElementById('toastMsg').classList.add('show');
-  setTimeout(() => document.getElementById('toastMsg').classList.remove('show'), 2500);
-});
+    // Recalculate and update order summary (subtotal, express fee, grand total, dynamic list)
+    function updateSummary() {
+      let subtotal = 0;
+      const itemsWithQty = [];
 
-document.getElementById('resetFormBtn').addEventListener('click', () => {
-  LAUNDRY_ITEMS.forEach(item => document.getElementById(`qty-${item.id}`).value = 0);
-  updateSummary();
-});
+      LAUNDRY_ITEMS.forEach(item => {
+        const qty = parseInt(document.getElementById(`qty-${item.id}`).value);
+        if (qty > 0) {
+          const itemTotal = qty * item.price;
+          subtotal += itemTotal;
+          itemsWithQty.push({ name: item.name, qty, price: item.price, total: itemTotal });
+        }
+      });
 
-// Initial render
-renderItems();
-updateSummary();
-</script>
+      // Update dynamic summary list
+      dynamicSummaryDiv.innerHTML = "";
+      if (itemsWithQty.length === 0) {
+        dynamicSummaryDiv.innerHTML = `<div style="color:#94a3b8; text-align:center;">No items selected</div>`;
+      } else {
+        itemsWithQty.forEach(item => {
+          const div = document.createElement('div');
+          div.classList.add('summary-item');
+          div.innerHTML = `<span>${item.name} x ${item.qty}</span><span>Ksh ${item.total}</span>`;
+          dynamicSummaryDiv.appendChild(div);
+        });
+      }
+
+      subtotalSpan.textContent = `Ksh ${subtotal}`;
+
+      // Express fee handling
+      const expressChecked = expressCheckbox.checked;
+      let expressFee = 0;
+      if (expressChecked) {
+        expressFee = subtotal * 0.1;
+        expressFeeSpan.textContent = `Ksh ${expressFee}`;
+        expressFeeRow.style.display = 'flex';
+      } else {
+        expressFeeRow.style.display = 'none';
+      }
+
+      const grandTotal = subtotal + expressFee;
+      grandTotalSpan.textContent = `Ksh ${grandTotal}`;
+    }
+
+    // Reset all quantities to zero
+    function resetAllItems() {
+      LAUNDRY_ITEMS.forEach(item => {
+        const input = document.getElementById(`qty-${item.id}`);
+        if (input) input.value = 0;
+        document.getElementById(`lineTotal-${item.id}`).textContent = "Ksh 0";
+      });
+      updateSummary();
+    }
+
+    // Build WhatsApp message with order details
+    function buildWhatsAppMessage() {
+      // Get customer details
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      const address = document.getElementById('customerAddress').value.trim();
+      const date = document.getElementById('serviceDate').value;
+      const notes = document.getElementById('specialNotes').value.trim();
+
+      // Validate required fields
+      if (!name) return { error: "Please enter your full name." };
+      if (!phone) return { error: "Please enter your phone number." };
+
+      // Collect ordered items
+      const orderedItems = [];
+      LAUNDRY_ITEMS.forEach(item => {
+        const qty = parseInt(document.getElementById(`qty-${item.id}`).value);
+        if (qty > 0) {
+          orderedItems.push({ name: item.name, qty, price: item.price, total: qty * item.price });
+        }
+      });
+
+      if (orderedItems.length === 0) return { error: "Please add at least one item to your order." };
+
+      // Calculate totals
+      let subtotal = orderedItems.reduce((sum, i) => sum + i.total, 0);
+      const expressChecked = expressCheckbox.checked;
+      let expressFee = 0;
+      if (expressChecked) expressFee = subtotal * 0.1;
+      const grandTotal = subtotal + expressFee;
+
+      // Build message
+      let message = `🟦 *NEW LAUNDRY ORDER* 🟦\n\n`;
+      message += `👤 *Name:* ${name}\n`;
+      message += `📞 *Phone:* ${phone}\n`;
+      if (address) message += `📍 *Address:* ${address}\n`;
+      if (date) message += `📅 *Preferred date:* ${date}\n`;
+      if (notes) message += `📝 *Notes:* ${notes}\n\n`;
+
+      message += `🧺 *ITEMS:*\n`;
+      orderedItems.forEach(item => {
+        message += `• ${item.name} x${item.qty} — Ksh ${item.total}\n`;
+      });
+
+      message += `\n💵 *Subtotal:* Ksh ${subtotal}\n`;
+      if (expressChecked) {
+        message += `⚡ *Express fee (10%):* Ksh ${expressFee}\n`;
+      }
+      message += `🔹 *TOTAL:* Ksh ${grandTotal}\n\n`;
+      message += `_Thank you for choosing PureFresh Laundry!_`;
+
+      return { message, error: null };
+    }
+
+    // Send order via WhatsApp
+    function sendOrderToWhatsApp() {
+      const { message, error } = buildWhatsAppMessage();
+      if (error) {
+        showToast(error);
+        return;
+      }
+
+      // Encode message for URL
+      const encodedMsg = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+      window.open(whatsappUrl, '_blank');
+      showToast("Opening WhatsApp...");
+    }
+
+    // Event listeners
+    placeOrderBtn.addEventListener('click', sendOrderToWhatsApp);
+    resetFormBtn.addEventListener('click', () => {
+      resetAllItems();
+      // Optionally clear form fields
+      document.getElementById('customerName').value = '';
+      document.getElementById('customerPhone').value = '';
+      document.getElementById('customerAddress').value = '';
+      document.getElementById('serviceDate').value = '';
+      document.getElementById('specialNotes').value = '';
+      expressCheckbox.checked = false;
+      updateSummary();
+      showToast("All items reset.");
+    });
+
+    expressCheckbox.addEventListener('change', updateSummary);
+
+    // Initial render
+    renderItems();
+    updateSummary();
+  </script>
 </body>
 </html>
