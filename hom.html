@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PureFresh Laundry | Premium Care</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* GLOBAL STYLES */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f9fe;
+      color: #1e2a3e;
+      line-height: 1.4;
+      scroll-behavior: smooth;
+    }
+    a {text-decoration: none; color: inherit;}
+    ::-webkit-scrollbar {width: 8px;}
+    ::-webkit-scrollbar-track {background: #e2e8f0; border-radius: 10px;}
+    ::-webkit-scrollbar-thumb {background: #3b82f6; border-radius: 10px;}
+    .container {max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem;}
+
+    /* HERO BANNER */
+    .hero {
+      width: 100%;
+      height: 250px;
+      background: url('https://images.unsplash.com/photo-1617196039187-cf7de71dc3ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0MTYzM3wwfDF8c2VhcmNofDJ8fGxhYXVuZHJ5fGVufDB8fHx8MTY5ODEyNzU5Mg&ixlib=rb-4.0.3&q=80&w=1400') center/cover no-repeat;
+      border-radius: 24px;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+    .hero h1 {font-size: 2.4rem; font-weight: 800; background: linear-gradient(135deg,#1E3A8A,#3B82F6); -webkit-background-clip: text; color: transparent;}
+
+    /* HEADER */
+    .header {display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 2rem;}
+    .logo h1 {font-size: 1.9rem; font-weight: 800; background: linear-gradient(135deg, #1E3A8A, #3B82F6); -webkit-background-clip: text; color: transparent; letter-spacing: -0.5px;}
+    .logo p {font-size: 0.85rem; color: #4b5563; font-weight: 500;}
+    .badge {background: white; padding: 0.5rem 1.2rem; border-radius: 100px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-weight: 600; font-size: 0.9rem; color: #1e40af; border: 1px solid #bfdbfe;}
+    .badge i {margin-right: 6px; color: #3b82f6;}
+
+    /* SHOP GRID */
+    .shop-grid {display: grid; grid-template-columns: 1fr 0.95fr; gap: 2rem;}
+    .card {background: white; border-radius: 32px; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08); padding: 1.8rem; transition: all 0.3s ease; border: 1px solid rgba(203,213,225,0.4);}
+    .card:hover {transform: translateY(-4px); box-shadow: 0 25px 40px -10px rgba(0,0,0,0.1);}
+
+    .section-title {font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; border-left: 5px solid #3b82f6; padding-left: 1rem;}
+    .section-title i {color: #3b82f6; font-size: 1.4rem;}
+
+    /* ITEMS LIST */
+    .items-list {display: flex; flex-direction: column; gap: 1rem;}
+    .item-row {display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; background: #fafcff; padding: 0.9rem 1rem; border-radius: 24px; transition: 0.2s; border: 1px solid #eef2ff;}
+    .item-row:hover {background: #f0f6ff; transform: scale(1.02);}
+    .item-info {display: flex; align-items: center; gap: 16px; flex: 2;}
+    .item-info img {width: 150px; height: 150px; object-fit: cover; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);}
+    .item-name {font-weight: 700; font-size: 1.1rem;}
+    .item-price {background: #eef2ff; padding: 4px 10px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; color: #1e40af;}
+
+    .item-controls {display: flex; align-items: center; gap: 20px; flex-wrap: wrap;}
+    .qty-control {display: flex; align-items: center; gap: 10px; background: white; border-radius: 48px; border: 1px solid #cbd5e1; padding: 4px 12px;}
+    .qty-control input {width: 60px; text-align: center; border: none; font-weight: 600; font-size: 1rem; background: transparent; padding: 6px 0; outline: none;}
+    .item-line-total {font-weight: 700; color: #0f172a; min-width: 70px; text-align: right; font-size: 1rem;}
+
+    /* EXPRESS OPTION */
+    .express-option {margin-top: 1.8rem; background: #f1f5f9; border-radius: 24px; padding: 1rem 1.2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;}
+    .express-label {display: flex; align-items: center; gap: 12px; font-weight: 600; cursor: pointer;}
+    .express-label input {width: 20px; height: 20px; cursor: pointer; accent-color: #3b82f6;}
+
+    /* CUSTOMER SUMMARY */
+    .customer-summary {display: flex; flex-direction: column; gap: 1.8rem;}
+    .form-group {margin-bottom: 1.2rem;}
+    .form-group label {font-weight: 600; display: block; margin-bottom: 6px; font-size: 0.85rem; color: #334155;}
+    .form-group input, .form-group textarea, .form-group select {width: 100%; padding: 12px 16px; border-radius: 20px; border: 1px solid #cbd5e6; font-family: inherit; background: white; transition: 0.2s; font-size: 0.9rem;}
+    .form-group input:focus, .form-group textarea:focus {outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.2);}
+
+    .order-summary-box {background: #f8fafc; border-radius: 28px; padding: 1.2rem; margin-top: 0.5rem;}
+    .summary-items-list {max-height: 200px; overflow-y: auto; margin-bottom: 1rem; font-size: 0.9rem;}
+    .summary-item {display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #e2e8f0;}
+    .total-row {display: flex; justify-content: space-between; font-weight: 600; padding: 8px 0; border-top: 2px solid #cbd5e1; margin-top: 8px;}
+    .grand-total {font-size: 1.3rem; font-weight: 800; color: #075985;}
+
+    /* BUTTONS */
+    .btn-primary {background: linear-gradient(95deg, #1e3a8a, #2563eb); border: none; width: 100%; padding: 14px; border-radius: 50px; font-weight: 700; font-size: 1rem; color: white; cursor: pointer; transition: 0.2s; margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 8px 18px rgba(37,99,235,0.2);}
+    .btn-primary:hover {transform: translateY(-2px); background: linear-gradient(95deg, #0f2b6d, #1d4ed8); box-shadow: 0 14px 22px rgba(37,99,235,0.25);}
+    .btn-secondary {background: #f1f5f9; border: 1px solid #cbd5e1; width: 100%; padding: 12px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 0.8rem; transition: 0.2s;}
+    .btn-secondary:hover {background: #e6edf5;}
+
+    /* FREE DELIVERY BADGE */
+    .free-delivery-badge {background: #dcfce7; padding: 6px 12px; border-radius: 60px; font-size: 0.7rem; font-weight: 600; color: #15803d; display: inline-flex; align-items: center; gap: 6px; margin-top: 8px;}
+
+    /* TOAST */
+    .toast-notify {visibility: hidden; min-width: 260px; background: #1e293b; color: white; text-align: center; border-radius: 50px; padding: 12px 20px; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 1000; font-weight: 500; backdrop-filter: blur(8px); background: rgba(15, 23, 42, 0.9); box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: 0.2s;}
+    .toast-notify.show {visibility: visible; animation: fadeInUp 0.3s ease;}
+    @keyframes fadeInUp {from {opacity: 0; transform: translateX(-50%) translateY(20px);} to {opacity: 1; transform: translateX(-50%) translateY(0);}}
+
+    /* FOOTER */
+    footer {text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; color: #5b6e8c; font-size: 0.8rem;}
+
+    @media (max-width: 880px) {
+      .shop-grid {grid-template-columns: 1fr; gap: 1.5rem;}
+      .container {padding: 1rem;}
+      .item-row {flex-direction: column; align-items: flex-start; gap: 10px;}
+      .item-controls {width: 100%; justify-content: space-between;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero"><h1><i class="fas fa-soap"></i> PureFresh Laundry</h1></div>
+
+    <div class="header">
+      <div class="logo">
+        <h1><i class="fas fa-soap"></i> PureFresh Laundry</h1>
+        <p>Eco-friendly care • Premium finish • Free pickup for orders over Ksh 3,000</p>
+      </div>
+      <div class="badge"><i class="fas fa-clock"></i> Mon-Sat: 8am – 8pm</div>
+    </div>
+
+    <div class="shop-grid">
+      <!-- LEFT SIDE -->
+      <div class="card">
+        <div class="section-title"><i class="fas fa-tshirt"></i><span>Select your items</span></div>
+        <div class="items-list" id="itemsContainer"></div>
+
+        <div class="express-option">
+          <label class="express-label">
+            <input type="checkbox" id="expressCheckbox">
+            <span><i class="fas fa-bolt"></i> Express Service (10% extra)</span>
+          </label>
+          <span style="font-size:0.8rem; color:#475569;">Priority in 24h</span>
+        </div>
+
+        <div id="freeDeliveryMsg" class="free-delivery-badge"> <i class="fas fa-truck"></i> Free delivery for orders over Ksh 3,000</div>
+      </div>
+
+      <!-- RIGHT SIDE: CUSTOMER INFO -->
+      <div class="customer-summary">
+        <div class="card">
+          <div class="section-title"><i class="fas fa-user-circle"></i> <span>Delivery details</span></div>
+          <div class="form-group"><label>Full name *</label><input type="text" id="customerName" placeholder="John Carter"></div>
+          <div class="form-group"><label>Phone number *</label><input type="tel" id="customerPhone" placeholder="+254 712 345 678"></div>
+          <div class="form-group"><label>Pickup / Delivery address</label><input type="text" id="customerAddress" placeholder="Street, city, estate"></div>
+          <div class="form-group"><label>Preferred date</label><input type="date" id="serviceDate"></div>
+          <div class="form-group"><label>Special notes (fabric, scent, etc.)</label><textarea rows="2" id="specialNotes" placeholder="Any preferences..."></textarea></div>
+        </div>
+
+        <div class="card">
+          <div class="section-title"><i class="fas fa-receipt"></i> <span>Order summary</span></div>
+          <div class="order-summary-box">
+            <div id="dynamicSummaryList" class="summary-items-list">
+              <div style="color:#94a3b8; text-align:center;">No items selected</div>
+            </div>
+            <div class="total-row"><span>Subtotal</span><span id="subtotalAmount">Ksh 0.00</span></div>
+            <div class="total-row" id="expressFeeRow" style="display: none;"><span>Express fee (50%)</span><span id="expressFeeAmount">Ksh 0.00</span></div>
+            <div class="total-row grand-total"><span>Total</span><span id="grandTotalAmount">Ksh 0.00</span></div>
+          </div>
+          <button class="btn-primary" id="placeOrderBtn"><i class="fas fa-check-circle"></i> Place order now</button>
+          <button class="btn-secondary" id="resetFormBtn"><i class="fas fa-undo-alt"></i> Reset all items</button>
+          
+        </div>
+          <img src="C:\Users\PC\LAUNDRY\ChatGPT Image Mar 27, 2026, 05_15_15 PM.png" alt="" style="width: 110%;height:30%;">
+      </div>
+    </div>
+
+    <footer><i class="fas fa-water"></i> Fresh & Clean guarantee | Same-day pickup available | Sustainable detergents | All prices in Ksh</footer>
+  </div>
+  <div id="toastMsg" class="toast-notify">✨ Order placed!</div>
+
+
+
+  <!-- JS -->
+  <script>
+const LAUNDRY_ITEMS = [
+  { id: 1, name: "Curtains and Sheets", price: 150, img: "screenshot 2026-03-27 163738.png" },
+  { id: 2, name: "Dust Coat", price: 100, img: "Screenshot 2026-03-27 164025.png" },
+  { id: 3, name: "Graduation Gown", price: 250, img: "Screenshot 2026-03-27 164046.png" },
+  { id: 4, name: "Bags Small", price: 70, img: "Screenshot 2026-03-27 164627.png" },
+  { id: 5, name: "Full Suit", price: 250, img: "Screenshot 2026-03-27 164807.png" },
+  { id: 6, name: "Jacket", price: 150, img: "https://images.pexels.com/photos/16170/pexels-photo.jpg" },
+  { id: 7, name: "Trench Coat", price: 150, img: "https://images.pexels.com/photos/5424917/pexels-photo-5424917.jpeg" },
+  { id: 8, name: "Leather Jacket", price: 200, img: "https://images.pexels.com/photos/7679455/pexels-photo-7679455.jpeg" },
+  { id: 9, name: "Cap", price: 50, img: "https://images.pexels.com/photos/5698908/pexels-photo-5698908.jpeg" },
+  { id: 10, name: "Brief Case Bag", price: 150, img: "https://images.pexels.com/photos/4894831/pexels-photo-4894831.jpeg" },
+  { id: 11, name: "Bedsheet", price: 150, img: "https://images.pexels.com/photos/2422571/pexels-photo-2422571.jpeg" },
+  { id: 12, name: "Doormat", price: 100, img: "https://images.pexels.com/photos/11815674/pexels-photo-11815674.jpeg" },
+  // Three duvet sizes with specified prices
+  { id: 13, name: "Duvet 4x6", price: 400, img: "https://images.pexels.com/photos/6207464/pexels-photo-6207464.jpeg" },
+  { id: 14, name: "Duvet 5x6", price: 500, img: "https://images.pexels.com/photos/6207464/pexels-photo-6207464.jpeg" },
+  { id: 15, name: "Duvet 6x6", price: 600, img: "https://images.pexels.com/photos/6207464/pexels-photo-6207464.jpeg" }
+];
+
+const itemsContainer = document.getElementById('itemsContainer');
+const dynamicSummaryDiv = document.getElementById('dynamicSummaryList');
+const subtotalSpan = document.getElementById('subtotalAmount');
+const grandTotalSpan = document.getElementById('grandTotalAmount');
+const expressCheckbox = document.getElementById('expressCheckbox');
+const expressFeeRow = document.getElementById('expressFeeRow');
+const expressFeeSpan = document.getElementById('expressFeeAmount');
+
+function renderItems() {
+  itemsContainer.innerHTML = "";
+  LAUNDRY_ITEMS.forEach(item => {
+    const itemRow = document.createElement('div');
+    itemRow.classList.add('item-row');
+    itemRow.innerHTML = `
+      <div class="item-info">
+        <img src="${item.img}" alt="${item.name}">
+        <div>
+          <div class="item-name">${item.name}</div>
+          <div class="item-price">Ksh ${item.price}</div>
+        </div>
+      </div>
+      <div class="item-controls">
+        <div class="qty-control">
+          <button onclick="updateQty(${item.id}, -1)">-</button>
+          <input type="number" id="qty-${item.id}" value="0" min="0">
+          <button onclick="updateQty(${item.id}, 1)">+</button>
+        </div>
+        <div class="item-line-total" id="lineTotal-${item.id}">Ksh 0</div>
+      </div>
+    `;
+    itemsContainer.appendChild(itemRow);
+  });
+}
+
+function updateQty(id, change) {
+  const input = document.getElementById(`qty-${id}`);
+  let qty = parseInt(input.value) + change;
+  if (qty < 0) qty = 0;
+  input.value = qty;
+
+  const item = LAUNDRY_ITEMS.find(i => i.id === id);
+  document.getElementById(`lineTotal-${id}`).textContent = `Ksh ${qty * item.price}`;
+  updateSummary();
+}
+
+function updateSummary() {
+  let subtotal = 0;
+  dynamicSummaryDiv.innerHTML = "";
+  LAUNDRY_ITEMS.forEach(item => {
+    const qty = parseInt(document.getElementById(`qty-${item.id}`).value);
+    if (qty > 0) {
+      subtotal += qty * item.price;
+      const div = document.createElement('div');
+      div.classList.add('summary-item');
+      div.innerHTML = `<span>${item.name} x ${qty}</span><span>Ksh ${qty * item.price}</span>`;
+      dynamicSummaryDiv.appendChild(div);
+    }
+  });
+
+  subtotalSpan.textContent = `Ksh ${subtotal}`;
+  if (expressCheckbox.checked) {
+    const expressFee = subtotal * 0.1;
+    expressFeeSpan.textContent = `Ksh ${expressFee}`;
+    expressFeeRow.style.display = 'flex';
+    grandTotalSpan.textContent = `Ksh ${subtotal + expressFee}`;
+  } else {
+    expressFeeRow.style.display = 'none';
+    grandTotalSpan.textContent = `Ksh ${subtotal}`;
+  }
+
+  if (subtotal === 0) dynamicSummaryDiv.innerHTML = `<div style="color:#94a3b8; text-align:center;">No items selected</div>`;
+}
+
+expressCheckbox.addEventListener('change', updateSummary);
+
+document.getElementById('placeOrderBtn').addEventListener('click', () => {
+  document.getElementById('toastMsg').classList.add('show');
+  setTimeout(() => document.getElementById('toastMsg').classList.remove('show'), 2500);
+});
+
+document.getElementById('resetFormBtn').addEventListener('click', () => {
+  LAUNDRY_ITEMS.forEach(item => document.getElementById(`qty-${item.id}`).value = 0);
+  updateSummary();
+});
+
+// Initial render
+renderItems();
+updateSummary();
+</script>
+</body>
+</html>
